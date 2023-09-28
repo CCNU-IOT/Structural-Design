@@ -8,8 +8,6 @@
 cat /etc/issue
 ```
 
-![image-20230928120816120](C:\Users\86152\AppData\Roaming\Typora\typora-user-images\image-20230928120816120.png)
-
 
 
 - 更新当前软件,依次执行下列命令
