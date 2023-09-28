@@ -74,3 +74,68 @@ git init
 3. 如果是第一次推送到GitHub，可能需要提供GitHub用户名和密码或令牌进行身份验证。
 
 一旦完成上述步骤，本地Git仓库将被上传到GitHub，并与GitHub仓库同步。可以随时将更改推送到GitHub，使用`git add`和`git commit`添加和提交更改，然后使用`git push`命令将它们推送到GitHub仓库。
+
+
+
+
+
+> 关于第一次推送到Github的身份验证
+
+
+
+以下是第一次推送到GitHub时可能需要的两种身份验证方法：
+
+1. **个人访问令牌（Personal Access Token）**：
+
+   - 登录到你的GitHub帐户。
+   - 点击右上角的头像，然后选择 "Settings"。
+   - 在左侧导航栏中，选择 "Developer settings"。
+   - 在 Developer settings 页面中，选择 "Personal access tokens"。
+   - 点击 "Generate token" 按钮，按照提示创建一个新的个人访问令牌。
+   - 选择所需的权限（scope），通常情况下，你需要选择 "repo" 权限以便访问和修改仓库。
+   - 生成令牌后，将其复制并保存在安全的地方。这个令牌只会在创建时显示一次。
+
+   在推送到GitHub时，使用个人访问令牌代替用户名和密码进行身份验证。你可以将令牌作为密码来使用。例如，在使用Git时，将个人访问令牌添加为密码：
+
+   ```
+   Username: 你的GitHub用户名
+   Password: 你的个人访问令牌
+   ```
+
+2. **SSH 密钥**：
+
+   - 如果你想使用SSH密钥进行身份验证，首先需要生成SSH密钥对。
+   - 将公钥添加到你的GitHub帐户。在GitHub上，进入 "Settings" > "SSH and GPG keys" > "New SSH key"，将你的**公钥**粘贴到这里。
+   - 在本地的Git配置中使用SSH URL来克隆或推送GitHub仓库。例如：
+
+   ```
+   git clone git@github.com:你的用户名/你的仓库名.git
+   ```
+
+   使用SSH密钥进行身份验证时，不需要提供密码或令牌。
+
+
+
+如何获得公钥？
+
+
+
+**Windows用 Git Bash，Linux直接用终端操作**
+
+1. 如果你已经安装了 Git for Windows，那么通常也包含了 Git Bash。打开 Git Bash。
+
+2. 在 Git Bash 终端中，使用以下命令生成 SSH 密钥对：
+
+   ```
+   ssh-keygen -t rsa -b 2048 -C "你的电子邮件地址"
+   ```
+
+   - `-t` 指定密钥类型（这里使用 RSA）。
+   - `-b` 指定密钥位数（2048 位是一个常见的安全选择）。
+   - `-C` 选项用于添加注释，可以用你的电子邮件地址或其他标识信息。
+
+3. 程序将提示你选择密钥文件的保存位置和名称。默认情况下，密钥将保存在用户文件夹下的 `.ssh` 目录中。你可以按 Enter 键接受默认值，或者指定其他位置。
+
+4. 如果你设置了密码，它将要求你输入一个密码来保护你的私钥。输入密码并确认。
+
+5. 完成后，你将在指定的目录中找到生成的 SSH 密钥对文件。公钥文件的扩展名为 `.pub`，私钥文件没有扩展名。
