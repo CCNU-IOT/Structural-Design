@@ -101,6 +101,18 @@ sudo service smbd restart
 
 - 现在，在Windows上win+R弹出的串口中输入\\ip即可访问
 
+ip可在Linux虚拟机上终端输入下面指令获得
+
+```
+ifconfig
+```
+
+
+
+
+
+
+
 ![image-20230928121921436](https://cdn.jsdelivr.net/gh/chengkhen/picture_via_picco/202309281219479.png)
 
 
